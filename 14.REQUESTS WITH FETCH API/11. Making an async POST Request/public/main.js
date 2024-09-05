@@ -1,5 +1,6 @@
+import { renderRawResponse, renderJsonResponse, renderResponse } from './public/helperFunctions.js';
 // information to reach API
-const apiKey = '<Your API Key>';
+const apiKey = '22661be31f0d483a9babb9f448d328bd';
 const url = 'https://api.rebrandly.com/v1/links';
 
 // Some page elements
@@ -13,8 +14,14 @@ const shortenUrl = async () => {
   const data = JSON.stringify({destination: urlToShorten});
   try {
     const response = await fetch(
-      // add code here
-    );
+      url, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Content-type': 'application/json',
+          'apikey': apiKey
+        }
+      });
 		if(response.ok){
       const jsonResponse = await response.json();
       renderResponse(jsonResponse);
@@ -23,6 +30,7 @@ const shortenUrl = async () => {
     console.log(error);
   }
 }
+//https://share.icloud.com/photos/00cNZ6GuJr9BiqwsKe-a4lFNA
 
 // Clear page and call Asynchronous functions
 const displayShortUrl = (event) => {

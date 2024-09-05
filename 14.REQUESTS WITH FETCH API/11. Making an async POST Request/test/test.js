@@ -20,7 +20,14 @@ describe('', function () {
       }
     }
 
-    let isMatchOne = Structured.match(code, structureOne, { varCallbacks });
+    let isMatchOne;
+    try {
+			isMatchOne = Structured.match(code, structureOne, { varCallbacks });
+    } catch(e) {
+			assert.isOk(false, 'Looks like you have an error. Double check your syntax.');
+    }
+    
+    
     assert.isOk(isMatchOne, varCallbacks.error || 'Did you reassign apiKey to be your Rebrandly API key?')
   });
 });

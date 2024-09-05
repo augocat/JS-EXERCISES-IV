@@ -9,19 +9,23 @@ describe('', function () {
   it('', function() {
     let structureOne = function() {
       const getSuggestions = () => {
-        _.then(_).then()
+        _.then(_).then(jsonResponse => {
+          renderRawResponse(jsonResponse)
+        })
       }
     };
 
-    let structureTwo = function() {
+    let structureTwo = function(){
       const getSuggestions = () => {
-        _.then(_).then(jsonResponse => {})
+        _.then(_).then(jsonResponse => {
+          renderResponse(jsonResponse)
+        })
       }
-    };
+    }
 
     let isMatchOne = Structured.match(code, structureOne);
     let isMatchTwo = Structured.match(code, structureTwo);
-    assert.isOk(isMatchOne , 'Did you create an anonymous arrow callback function for the second `.then()`?');
-    assert.isOk(isMatchTwo , 'Did you pass in `jsonResponse` as parameter in the arrow function?');
+    assert.isNotOk(isMatchOne , 'Did you delete `renderRawResponse(jsonResponse)`?');
+    assert.isOk(isMatchTwo, 'Did you call `renderResponse(jsonResponse)` in the callback?')
   });
 });

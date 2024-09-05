@@ -1,5 +1,5 @@
-// Information to reach API
-const apiKey = '<Your API Key>';
+// Information to reach API ----https://share.icloud.com/photos/0daxJ8fH1Xz9MB_EhtRFM1I0w
+const apiKey = '22661be31f0d483a9babb9f448d328bd';
 const url = 'https://api.rebrandly.com/v1/links';
 
 // Some page elements
@@ -19,7 +19,14 @@ const shortenUrl = () => {
       'apikey': apiKey
     },
     body: data
-  })
+  }).then(response => {
+    if (response.ok) { 
+      return response.json()
+    }
+    throw new Error('Request failed!')
+}, networkError => {
+     console.log(networkError.message);
+}).then(jsonResponse => renderResponse(jsonResponse))
 }
 
 // Clear page and call Asynchronous functions
