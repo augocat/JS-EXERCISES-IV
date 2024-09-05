@@ -1,4 +1,4 @@
-import { renderRawResponse, renderJsonResponse, renderResponse } from './public/helperFunctions.js';
+// import { renderRawResponse, renderJsonResponse, renderResponse } from './public/helperFunctions.js';
 // information to reach API
 const apiKey = '22661be31f0d483a9babb9f448d328bd';
 const url = 'https://api.rebrandly.com/v1/links';

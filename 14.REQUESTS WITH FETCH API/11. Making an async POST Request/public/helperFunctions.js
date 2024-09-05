@@ -33,4 +33,4 @@ const renderJsonResponse = (response) => {
   // Manipulates responseField to show the returned JSON.
   responseField.innerHTML = `<pre>${rawJson}</pre>`
 }
-export { renderRawResponse, renderJsonResponse, renderResponse };
+// export { renderRawResponse, renderJsonResponse, renderResponse };
